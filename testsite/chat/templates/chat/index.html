@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Chat Demo</title>
+</head>
+<body>
+    <form method="post" action=""> {% csrf_token %}
+        <label>Cerebral Chat</label><br>
+        <p>{{ question }}</p>
+
+        {% if -1 != place and 9 != place %}
+            {% if error %}
+            <p style="color:red">{{ error }}</p>
+            {% endif %}
+        <label>Please enter your response below</label><br>
+        <textarea rows="4" cols="50" name="response"></textarea><br><br>
+        <input type = hidden name = "place" value="{{ place }}">
+        <input type = submit name="Next" value="Next">
+        {% elif 9 == place %}
+            <a href="view">Click here to see a transcript of this chat session</a><br>
+            <a href="connect">Click here to summon a doctor</a><br>
+        {% endif %}
+    </form>
+</body>
+</html>

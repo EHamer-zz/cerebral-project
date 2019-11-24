@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Websocket Connection</title>
+    {% block script %}
+    <script language="JavaScript">
+        function wsConnect() {
+            var socket = new WebSocket('wss://echo.websocket.org');
+
+            socket.onopen = function open() {
+                console.log('WebSockets connection created.');
+                document.getElementById('wsStatus').innerText = 'Websocket connection succeeded';
+            };
+
+            socket.onmessage = function message(event) {
+                var data = JSON.parse(event.data);
+            // NOTE: We escape JavaScript to prevent XSS attacks.
+                console.log(data);
+            }
+
+            if (socket.readyState == WebSocket.OPEN) {
+                socket.onopen();
+            }
+    }
+
+  </script>
+{% endblock script %}
+</head>
+<body onload="wsConnect()">
+    <label id="wsStatus"></label>
+</body>
+</html>
+

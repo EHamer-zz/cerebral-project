@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Chat Transcript</title>
+</head>
+<body>
+    {% for txt in dialog %}
+        Our question:&nbsp;{{ txt.question }}
+        <br>
+        Your answer:&nbsp;{{ txt.answer }}
+        <br>
+        <br>
+    {%  endfor %}
+</body>
+</html>
